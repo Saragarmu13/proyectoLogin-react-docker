@@ -1,0 +1,8 @@
+.correo-recuperar{
+    width: 94%;
+}
+
+.correo-recuperar:hover{
+    background-color: rgb(1, 53, 64, 0.8);
+    color: white;
+}

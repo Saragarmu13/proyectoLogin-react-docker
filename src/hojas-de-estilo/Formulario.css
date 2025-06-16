@@ -1,0 +1,99 @@
+html, body, #root, .App{
+    height: 100%;
+    margin:0;
+    padding: 0;
+    background-color: rgb(1, 53, 64);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.App{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-formulario{
+    padding: 10px 20px 40px 20px;
+    background-color: rgba(111, 163, 172, 0.627);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
+    color: white;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 15px; 
+}
+
+.usuario-password{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2px;
+}
+
+
+
+.usuario-input:hover, .password-input:hover{
+    background-color: rgb(1, 53, 64, 0.8);
+    color: white;
+}
+
+input{
+    padding: 10px;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    cursor:pointer;
+    background-color: rgb(0, 217, 255);
+    border-radius: 5px;
+    border-style:none;
+    color:white;
+}
+
+button:hover{
+    background-color: rgb(1, 53, 64);
+}
+
+.label-checkbox:hover, .link:hover{
+   color: rgb(1, 53, 64, 0.8);
+}
+
+.checkbox{
+    accent-color: darkgray;
+}
+.checkbox:hover{
+    accent-color: rgb(1, 53, 64, 0.8);
+}
+
+.contenedor-recuerda{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor:pointer;
+    width: 100%;
+    max-width: 300px;
+    font-size: 14px;
+    color: darkgray;
+}
+
+.link{
+    font-style: italic;
+    color: darkgray;
+}
+
+.error{
+    color:white;
+    font-size: smaller;
+}
+
+img{
+    max-width: 40px;
+}
