@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../hojas-de-estilo/Formulario.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Formulario(){
     const[usuario, setUsuario] = useState('')
@@ -8,8 +10,10 @@ function Formulario(){
     const[contrasena, setContrasena] = useState('')
     const[errorContrasena, setErrorContrasena] = useState('')
     const[blur, setBlur] = useState(false)
+    const[mensajeError, setMensajeError] = useState('');
     
-    
+    const navigate = useNavigate();
+
     function manejarCambioUsuario(e){
         setUsuario(e.target.value); //Actualiza el valor del estado
         const valor = e.target.value;
@@ -44,27 +48,36 @@ function Formulario(){
 
     /*cont[enviar,setEnviar] = useState('')*/
 
-    function manejarEnvio(e){
+    const manejarEnvio = async (e) => {
         e.preventDefault() // Evita que recargue la página
-        const userName = 'saragm1994@gmail.com'
-        const password = 'Sg123456'
-        if((usuario == userName) && (contrasena == password)){
-            confirm('Usuario y contraseña correctos');
-        } else{
-            confirm("El usuario o la contraseña no son correctos")
+        try{
+            const res = await axios.post('http://localhost:3001/usuarios/login', { 
+                correo: usuario, // el usuario y la contrasena, el segundo valor, es el parámetro que ponemos en el useState
+                contrasena: contrasena 
+            });
+            console.log('Respuesta del servidor:', res.data);
+
+            if(res.status === 200){
+                    navigate('/inicio');
+                }
+
+        } catch(error){
+            console.log('Error en login:', error.response?.data || error.message);
+            setMensajeError('Correo o contraseña incorrectos');
         }
-        
-    }
+    };
 
 return(
     <form 
     className='contenedor-formulario'
-    onSubmit={manejarEnvio}>
+    onSubmit={manejarEnvio}
+    action='/auth'
+    method='POST'>
         <header>
             <h1>INICIO DE SESIÓN</h1>
         </header>
 
-        <div className='usuario-password'>
+        <div className='contenedor-input'>
             <input
             className='usuario-input'
             type='text'
@@ -91,15 +104,30 @@ return(
             {blur && errorContrasena && (
                 <p className='error'>{errorContrasena}</p>
             )}
+
+            {mensajeError && <p className="error">{mensajeError}</p>}
         </div>
         
+        <div className='contenedor-botones'>
+            <button
+            className='boton-submit'
+            name='submit'
+            type='submit'
+            >
+            CONECTARSE
+            </button>
+            
 
-        <button
-        className='boton-submit'
-        name='submit'
-        type='submit'>
-        CONECTARSE
-        </button>
+           
+            <button
+            className='boton-registrarse'
+            name='registrarse'
+            type='button'>
+                <Link to='/registrarse' className='link-registrarse'>REGISTRARSE</Link>
+            </button>
+    
+        </div>
+       
 
         <div className='contenedor-recuerda'>
             <label className='label-checkbox'>
@@ -111,7 +139,7 @@ return(
             </label>
             
 
-           <Link to='/recuperarContrasena' className='link'>¿Olvidaste tu contraseña?</Link>
+           <Link to='/recuperarContrasena' className='link-recuperar-contrasena'>¿Olvidaste tu contraseña?</Link>
         </div>
         
     </form>

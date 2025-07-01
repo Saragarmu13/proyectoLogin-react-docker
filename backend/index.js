@@ -1,4 +1,4 @@
-const express = requiere('express');
+const express = require('express');
 const cors = require('cors');
 const usuariosRoutes = require('./routes/usuarios');
 
@@ -7,8 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/usuarios', usuariosRoutes);
+// seteamos urlencoded para capturar los datos del formulario, hace que puedas leer req.body con los datos del formulario.
+app.use(express.urlencoded({ extended: false })); 
 
-app.listen(3000, () => {
-    console.log("Servidor corriendo en puerto 3000");
+
+app.use('/usuarios', usuariosRoutes);
+
+//manejar usuarios con contraseña y quieres almacenar esas contraseñas de forma segura
+const bcryptjs = require('bcryptjs');
+
+app.listen(3001, () => {
+    console.log("Servidor corriendo en puerto 3001");
 })
