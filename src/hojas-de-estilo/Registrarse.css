@@ -1,0 +1,13 @@
+.nombreUsuario-input:hover{
+    background-color: rgb(1, 53, 64, 0.8);
+    color: white;
+}
+
+.link-reset{
+    text-decoration: none;
+    color:white
+}
+.error{
+    color:white;
+    font-size: smaller
+}

@@ -1,0 +1,12 @@
+.contenedor-inicio{
+    padding: 10px 20px 40px 20px;
+    background-color: rgba(111, 163, 172, 0.627);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
+    color: white;
+}
+
+h2{
+    color: white;
+}
