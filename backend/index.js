@@ -16,6 +16,6 @@ app.use('/usuarios', usuariosRoutes);
 //manejar usuarios con contraseña y quieres almacenar esas contraseñas de forma segura
 const bcryptjs = require('bcryptjs');
 
-app.listen(3001, () => {
+app.listen(3001, '0.0.0.0', () => {
     console.log("Servidor corriendo en puerto 3001");
 })

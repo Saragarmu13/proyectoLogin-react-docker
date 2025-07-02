@@ -5,9 +5,20 @@ services:
     build: .
     ports:
       - "3000:3000"
+    depends_on:
+      - backend
 
     environment:
       - CHOKIDAR_USEPOLLING=true # 👈 importante para hot-reload en Docker
       - PORT=3000
       - HOST=0.0.0.0              # 👈 esto es clave para que React escuche fuera del contenedor
+    restart: always
+  
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
     restart: always
