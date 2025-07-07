@@ -13,9 +13,17 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/usuarios', usuariosRoutes);
 
+const pingRoute = require('./routes/ping');
+app.use(pingRoute);
+
+const testRoutes = require('./routes/test');
+app.use(testRoutes);
+
 //manejar usuarios con contraseña y quieres almacenar esas contraseñas de forma segura
 const bcryptjs = require('bcryptjs');
+
 
 app.listen(3001, '0.0.0.0', () => {
     console.log("Servidor corriendo en puerto 3001");
 })
+
