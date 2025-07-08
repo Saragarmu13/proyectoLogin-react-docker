@@ -1,4 +1,5 @@
-const express = require('express');
+// Prueba para ver si funciona el backend
+/*const express = require('express');
 const router = express.Router();
 
 router.get('/ping', (req, res) => {
@@ -6,3 +7,4 @@ router.get('/ping', (req, res) => {
 });
 
 module.exports = router;
+*/

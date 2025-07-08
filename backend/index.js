@@ -13,11 +13,13 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/usuarios', usuariosRoutes);
 
-const pingRoute = require('./routes/ping');
-app.use(pingRoute);
+// Ruta de prueba para ver si funciona el backend
+//const pingRoute = require('./routes/ping');
+//app.use(pingRoute);
 
-const testRoutes = require('./routes/test');
-app.use(testRoutes);
+// Ruta de prueba para ver si funciona la base de datos
+//const testRoutes = require('./routes/test');
+//app.use(testRoutes);
 
 //manejar usuarios con contraseña y quieres almacenar esas contraseñas de forma segura
 const bcryptjs = require('bcryptjs');

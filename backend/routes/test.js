@@ -1,3 +1,5 @@
+// Prueba para ver si hay conexión a la base de datos
+/*
 const express = require('express');
 const router = express.Router();
 const pool = require('../bd');
@@ -13,3 +15,4 @@ router.get('/test-db', async (req, res) => {
 });
 
 module.exports = router;
+*/
